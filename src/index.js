@@ -11,6 +11,15 @@ module.exports = {
                 });
                 return result
             })
-    }
+    },
     
+    addPost : (userId, postTitle, postBody) => {
+        let post = new Post();
+        post.addPost(userId, postTitle, postBody)
+            .then(result => {
+                const newPostTable = "<tr><td>"+ result.id +"</td><td>"+ result.title + "</td><td>" + result.body + "</td></tr>"
+                document.getElementById('table-new-post').insertAdjacentHTML('beforeend', newPostTable);
+                return result;
+            });
+    }
 }
