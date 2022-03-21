@@ -9,6 +9,32 @@
 <body>
     <h1>JSON Placeholder Testing API</h1>
     <section>
+        <h2>Add New Post</h2>
+        <label for="inputUserId">User Id: </label>
+        <input type="text" name="inputUserId" id="inputUserId"><br/><br/>
+        <label for="inputTitle">Post Title: </label>
+        <input type="text" name="inputTitle" id="inputTitle"><br/><br/>
+        <label for="inputBody">Post Content: </label>
+        <input type="text" name="inputBody" id="inputBody"><br/><br/>
+        <button type="submit" onclick="add()">Add</button>
+        <br/>
+
+        <table width="1000">
+            <th>
+                <tr>
+                    <td width="10%">Id</td>
+                    <td width="20%">Title</td>
+                    <td>Body</td>
+                </tr>
+            </th>
+            <tbody id="table-new-post">
+                
+            </tbody>
+        </table>
+        <br>
+    </section>
+
+    <section>
         <div class="" id="employee-post">
             <h2>
                 Search Employee Post
@@ -45,6 +71,14 @@
         async function searchPost(id){
             var res = await App.searchPost(id)
             return res
+        }
+
+        function add(){
+            const userId = document.getElementById('inputUserId').value;
+            const postTitle = document.getElementById('inputTitle').value;
+            const postBody = document.getElementById('inputBody').value;
+
+            App.addPost(userId, postTitle, postBody);
         }
     </script>
 </body>

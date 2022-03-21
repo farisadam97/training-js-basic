@@ -16,4 +16,24 @@ module.exports.Post = class Post {
             throw err
         })
     }
+
+    addPost(userId, postTitle, postBody){
+        return fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify({
+                userId: userId,
+                title: postTitle,
+                body: postBody,
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => {
+            throw err;
+        })
+    }
 }
