@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JSON Placeholder Testing API</h1>
+    <section>
+        <div class="" id="employee-post">
+            <h2>
+                Search Employee Post
+            </h2>
+            <button id="btn-search-post">
+                Search
+            </button>
+            <table width="1000">
+                <th>
+                    <tr>
+                        <td width="10%">Id</td>
+                        <td width="20%">Title</td>
+                        <td>Body</td>
+                    </tr>
+                </th>
+                <tbody id="table-post">
+                    
+                </tbody>
+            </table>
+            <br>
+        </div>
+    </section>
+    <script src="../dist/main.js"></script>
+    <script>
+        var btnSearchPost = document.getElementById('btn-search-post')
+        var idSearchPost = document.getElementById('post-search')
+
+
+        btnSearchPost.addEventListener('click',function(e){
+            // let idSearchVal =  idSearchPost.value
+            App.searchPost()
+        })
+
+        async function searchPost(id){
+            var res = await App.searchPost(id)
+            return res
+        }
+    </script>
+</body>
+</html>
