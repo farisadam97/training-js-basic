@@ -31,6 +31,34 @@
             <br>
         </div>
     </section>
+
+    <section>
+        <div class="" id="post-update">
+            <h2>Update Post</h2>
+            <label for="inputId">Post Id: </label>
+            <input type="text" name="inputPostId" id="inputPostId"><br/><br/>
+            <label for="inputTitle">Post Title: </label>
+            <input type="text" name="inputTitle" id="inputTitle"><br/><br/>
+            <label for="inputBody">Post Content: </label>
+            <input type="text" name="inputBody" id="inputBody"><br/><br/>
+            <label for="inputUserId">User Id: </label>
+            <input type="text" name="inputUserId" id="inputUserId"><br/><br/>
+            <button type="submit" onclick="update()">Update</button>
+            <br/>
+            <table width="1000">
+                <thead>
+                    <tr>
+                        <th width="10%">id</th>
+                        <th width="20%">title</th>
+                        <th width="50%">body</th>
+                        <th width="20%">user id</th>
+                    </tr>
+                </thead>
+                <tbody id="table-post-update"></tbody>
+            </table>
+        </div>
+    </section>
+
     <script src="../dist/main.js"></script>
     <script>
         var btnSearchPost = document.getElementById('btn-search-post')
@@ -45,6 +73,20 @@
         async function searchPost(id){
             var res = await App.searchPost(id)
             return res
+        }
+
+        async function update(){
+            const id = document.getElementById('inputPostId').value;
+            const userId = document.getElementById('inputUserId').value;
+            const postTitle = document.getElementById('inputTitle').value;
+            const postBody = document.getElementById('inputBody').value;
+
+            try { 
+                var res = await App.updatePost(id, postTitle, postBody, userId);
+                document.getElementById("table-post-update").insertAdjacentHTML("beforeend", res);
+            } catch (e) {
+                console.log("error:", e)
+            };
         }
     </script>
 </body>

@@ -1,7 +1,7 @@
 let  {User,Post} = require('./user/user')
 
 module.exports = {
-    searchPost : () => {
+    searchPost: () => {
         let post = new Post()
         post.searchPost()
             .then(result => {
@@ -11,6 +11,14 @@ module.exports = {
                 });
                 return result
             })
+    },
+
+    updatePost: (id, postTitle, postBody, userId) => {
+        let post = new Post();
+        return post.updatePost(id, postTitle, postBody, userId)
+            .then(result => {
+                return `<tr><td>` + result.id + `</td><td>` + result.title +
+                    `</td><td>` + result.body + `</td><td>` + result.userId + `</td></tr>`;
+            });
     }
-    
 }
